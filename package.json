@@ -1,0 +1,29 @@
+{
+  "name": "MikhnavetsNataliya_Project",
+  "version": "1.0.0",
+  "description": "Идея проекта не нова, хотелось бы попробовать реализовать игру для тренировки памяти и внимания. За основу взята игра для нахождения одинаковых карточек, спрятанных среди  карточек повернутых рубашкой вверх. Игра планируется реализовываться в несколько уровней, с увеличением количества карточек, что усложняет процесс их нахождения, и соответственно происходит тренировка внимания. Возможна дальнейшее усовершенствование, это введение уровня с ограниченным количеством времени для нахождения пар-карточек.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikhnavetsNataliya/MikhnavetsNataliya_Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikhnavetsNataliya/MikhnavetsNataliya_Project/issues"
+  },
+  "homepage": "https://github.com/MikhnavetsNataliya/MikhnavetsNataliya_Project#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-airbnb-es5": "^1.2.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-react": "^7.13.0"
+  }
+}
