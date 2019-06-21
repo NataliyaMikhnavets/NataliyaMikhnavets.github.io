@@ -3,3 +3,51 @@
 @import url(../fonts/fonts.css);
 */
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mali:400,400i,600,600i&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Rubic, Helvetica sans-serif;
+}
+
+.navbar {
+    display: flex;
+    width: 100%;
+    max-width: 55vw;
+    margin: 0 auto;
+    padding: 2rem;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.navbar__item {
+    margin: 0.6em;
+    padding: 0.6em 1em;
+    font-family: 'Mali', Arial, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 0.123em;
+    color: #004d61;
+    text-decoration: none;
+
+    /*text-shadow: 0 -1px rgb(52, 132, 152);*/
+
+    line-height: 2em;
+    outline: none;
+    border-radius: 2em;
+    border: 0.16em solid #004d61;
+    background-color: #5bd1d7;
+}
+
+.navbar__item:active {
+    top: 1px;
+    color: #5bd1d7;
+    background: #004d61;
+}
+
+.navbar__item:hover {
+    color: #5bd1d7;
+    background: #004d61;
+}
