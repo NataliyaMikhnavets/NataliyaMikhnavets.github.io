@@ -7,9 +7,17 @@
 
 html,
 body {
+    /*display: flex;*/
+    height: 100vh;
+
+    width: 100vw;
+
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: Rubic, Helvetica sans-serif;
+    background: url("../img/main_background.jpg") 30% no-repeat;
+    background-size: cover;
 }
 
 .navbar {
@@ -47,7 +55,8 @@ body {
     background: #004d61;
 }
 
-.navbar__item:hover {
+.navbar__item:hover,
+.navbar__item:focus {
     color: #5bd1d7;
     background: #004d61;
 }
