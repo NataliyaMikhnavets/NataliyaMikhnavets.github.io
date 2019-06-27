@@ -1,0 +1,42 @@
+.memoryGame {
+    display: flex;
+    flex-wrap: wrap;
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    perspective: 1000px; /*3d-эффект: расстояние между объектом и пользоватилем в z-плоскости, чем ниже знач , тем сильнее эффект*/
+}
+
+.memoryCard {
+    position: relative;
+    margin: 5px;
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s; /*без transform-style: preserve-3d - не работает, создается эффект движения*/
+}
+
+.memoryCard:active { /*эффект при клике на карточку*/
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+
+.memoryCard.flip {
+    transform: rotateY(180deg);
+}
+
+.frontFace,
+.backFace {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden; /*прячем обратную сторону элемента в трехмерном пространстве*/
+}
+
+.frontFace {
+    transform: rotateY(180deg);
+}

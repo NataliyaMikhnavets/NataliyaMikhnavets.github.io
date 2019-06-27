@@ -1,4 +1,8 @@
+
 'use strict';
+
+
+
 let userName; //имя игрока
 let opened = []; //массив открытых полей
 let selected = [0, 0]; //массив пар последовательно выбранных полей
@@ -13,19 +17,17 @@ const gameConsts = {
   'gameAriaHeight': 800,
   cardSetting: {
     cardWidth: 50,
-    cardHeight: 50,
-    cardRX: 10,
-    cardRY: 10,
-    stroke: '#004d61',
-    'back-face': 'img/card_background.jpg',
+    cardHeight: 50
   },
   cardType: {
     tennisBall: {
       'front-face': 'src(img/ball/basketball_PNG1094.png)',
+      'back-face': 'img/card_background.jpg',
       'bgd-face': '#55db1d7'
     },
     volleyBall: {
       'front-face': 'src(img/ball/volleyball.jpg)',
+      'back-face': 'img/card_background.jpg',
       'bgd-face': '#55db1d7'
     }
   }
@@ -34,6 +36,11 @@ const gameConsts = {
 memoryGame.appendChild(createGameField());
 
 //UI
+
+function MiniCard(width, height) {
+  this.width = width;
+  this.height = height;
+}
 
 function createGameField() {
   let gameField = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -49,7 +56,7 @@ function createGameField() {
   return gameField;
 }
 
-function MiniCard(width, height, rx, ry, stroke, backFace) {
+function MiniCard(width, height, backFace) {
   let rectCard = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
   rectCard.setAttribute('cx', '10 + px'); //подумать над универсальным подсчетом сх и су calc(25% - 19%)
   rectCard.setAttribute('cy', '10 + px'); //calc(33.333% - 10px)
@@ -70,3 +77,4 @@ function initGame() {
   let output = '';
 
 }
+

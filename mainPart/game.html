@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="styleGame.css">
+</head>
+<body>
+
+<section id="memoryGame"></section>
+
+<script>
+  const gameConsts = {
+    'gameAriaWidth': 800,
+    'gameAriaHeight': 800,
+
+    cardType: {
+      tennisBall: {
+        'name-card': 'tennis',
+        'front-face': 'img/ball/basketball_PNG1094.png',
+        'back-face': 'img/card_background.jpg',
+        'bgd-color': '#55db1d7'
+      },
+      volleyBall: {
+        'name-card': 'volley',
+        'front-face': 'img/ball/volleyball.jpg',
+        'back-face': 'img/card_background.jpg',
+        'bgd-color': '#55db1d7'
+      }
+    }
+  };
+
+  //let gameField = document.getElementsByClassName('memoryGame');
+
+  function MemoryCard(imgFrontFace, nameCard, imgBackFace, bgdColorBackFace) {  //нужен ли тут this?
+    let memoryCard = document.createElement("div");
+    memoryCard.class = 'memoryCard';
+    let frontCard = document.createElement("img");
+    frontCard.classFront = 'frontFace';
+    frontCard.src = imgFrontFace;
+    frontCard.dataset.nameCard = nameCard; // добавляем data-атрибут, что бы определить совпадают ли карточки
+    let backCard = document.createElement("img");
+    backCard.class = 'backFace';
+    backCard.src = imgBackFace;
+    backCard.backgroundColor = bgdColorBackFace;
+
+    memoryCard.appendChild(frontCard);
+    memoryCard.appendChild(backCard);
+    return memoryCard;
+  }
+
+  let tennisCard = new MemoryCard(gameConsts.cardType.tennisBall["front-face"],
+                                  gameConsts.cardType.tennisBall["name-card"],
+                                  gameConsts.cardType.tennisBall["back-face"],
+                                  gameConsts.cardType.tennisBall["bgd-color"]);
+  let volleyCard = new MemoryCard(gameConsts.cardType.volleyBall["front-face"],
+                                  gameConsts.cardType.volleyBall["name-card"],
+                                  gameConsts.cardType.volleyBall["back-face"],
+                                  gameConsts.cardType.volleyBall["bgd-color"]);
+
+  let memoryCardArray = [];
+  memoryCardArray.push(tennisCard, volleyCard);
+  console.log(memoryCardArray);
+
+  let gameField = document.getElementById('memoryGame');
+
+  for (var i=0; i < memoryCardArray.length ; i++){
+    let doubleMemoryCardArray = memoryCardArray.concat(memoryCardArray.slice(0));
+    console.log(doubleMemoryCardArray);
+    gameField.appendChild(doubleMemoryCardArray[i]);
+    console.log(gameField);
+    shuffleField(doubleMemoryCardArray);
+    console.log(shuffleField(doubleMemoryCardArray));
+  }
+
+  function shuffleField(arr) { // тасование алгоритмом Фишера-Йетса
+    var j, temp;
+    for (var i = arr.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random()*(i + 1)); //генерируем целое число
+      temp = arr[j]; // меняем местами
+      arr[j] = arr[i]; //элемент массива с индексом j
+      arr[i] = temp; //и текущий элемент массива
+    }
+    return arr; //на выходе перемешанный массив
+  }
+  
+
+//---------работа с картами + событиями------клик на карточку = переворачивается
+  let cards = document.querySelectorAll('.memoryCard');
+  let hasFlippedCard = false;//состояние перевернутой карточки
+  let firstCard; //первая перевернутая карта
+  let secondCard; //вторая перевернутая карта
+  let lockCards = false; //блокировка не нажатых карт при уже нажатых двух
+
+  function flipCard() {
+    if (lockCards){return;} //?
+    if (this === firstCard) {return;} //?
+
+    this.classList.add('flip');
+    if (!hasFlippedCard) {
+      hasFlippedCard = true;
+      firstCard = this;
+      return;
+    }else {
+      secondCard = this;
+      hasFlippedCard = false;
+      checkMatch();
+    }
+  }
+
+  function checkMatch() {
+    if (firstCard.dataset.nameCard === secondCard.dataset.nameCard) {
+      disableCard();
+      return;
+    }
+    unflipCards();
+  }
+  // let checkMatch = firstCard.dataset.nameCard === secondCard.dataset.nameCard;
+  // checkMatch ? disableCard() : unflipCards()
+
+  function disableCard() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+
+    resetBoard();
+  }
+
+  function unflipCards() {
+    lockCards = true;
+    setTimeout( () => {
+      firstCard.classList.remove('flip');
+      secondCard.classList.remove('flip');
+
+      resetBoard();
+
+    }, 1500);
+  }
+
+  function resetBoard(){
+    hasFlippedCard = lockCards = false;
+    firstCard = secondCard = null;
+  }
+
+ cards.forEach(card => card.addEventListener('click', flipCard));
+//-------------------------------------------------
+
+ /* function saveResult() {
+    
+  }
+  */
+</script>
+
+</body>
+</html>
