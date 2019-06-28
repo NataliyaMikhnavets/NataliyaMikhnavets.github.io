@@ -10,6 +10,7 @@
 <section id="memoryGame"></section>
 
 <script>
+  let userName;
   const gameConsts = {
     'gameAriaWidth': 800,
     'gameAriaHeight': 800,
@@ -34,15 +35,15 @@
 
   function MemoryCard(imgFrontFace, nameCard, imgBackFace, bgdColorBackFace) {  //нужен ли тут this?
     let memoryCard = document.createElement("div");
-    memoryCard.class = 'memoryCard';
+    memoryCard.className = 'memoryCard';
     let frontCard = document.createElement("img");
     frontCard.classFront = 'frontFace';
     frontCard.src = imgFrontFace;
     frontCard.dataset.nameCard = nameCard; // добавляем data-атрибут, что бы определить совпадают ли карточки
     let backCard = document.createElement("img");
-    backCard.class = 'backFace';
+    backCard.className = 'backFace';
     backCard.src = imgBackFace;
-    backCard.backgroundColor = bgdColorBackFace;
+    backCard.style.backgroundColor = bgdColorBackFace;
 
     memoryCard.appendChild(frontCard);
     memoryCard.appendChild(backCard);
@@ -143,11 +144,15 @@
 
  cards.forEach(card => card.addEventListener('click', flipCard));
 //-------------------------------------------------
+let startGame;
+let cardFlipped;
+  function initGame() {
+    startGame = new Date().getTime();
+    cardFlipped = 0; // перевернутые карты
+    let output = '';
 
- /* function saveResult() {
-    
   }
-  */
+
 </script>
 
 </body>
