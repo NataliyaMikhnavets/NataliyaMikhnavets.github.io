@@ -21,7 +21,7 @@ body {
 .memoryCard {
     margin: 5px;
     width: calc(25% - 10px);
-    height: calc(33.333% - 10px);
+    height: calc(25% - 10px);
     position: relative;
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
     transform: scale(1);
@@ -42,7 +42,7 @@ body {
 .backFace {
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 10px;
     position: absolute;
     border-radius: 5px;
     backface-visibility: hidden; /*прячем обратную сторону элемента в трехмерном пространстве*/
@@ -50,4 +50,10 @@ body {
 
 .frontFace {
     transform: rotateY(180deg);
+}
+
+.timeDown {
+    display: block;
+    margin: 2px;
+    padding: 2px;
 }
