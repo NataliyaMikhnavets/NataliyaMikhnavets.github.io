@@ -6,225 +6,120 @@
   <link rel="stylesheet" href="styleGame.css">
 </head>
 <body>
-  <section class="timeDown"></section>
-  <section id="memoryGame">
-    <div class="memoryCard" data-nameCard="volley">
-      <img class="frontFace" src="img/ball/volley_ball.png" alt="volleyball">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+<h1>Training for memory</h1>
+<section class="wrapScore">
+  <h3>Time: <span id="timeDown"></span></h3>
+  <h3>Score: <span id="score"></span></h3>
+</section>
+<section id="memoryGame"></section>
+<div class="wrapPause">
+  <button id="buttonPause">Pause</button>
+</div>
 
-    <div class="memoryCard" data-nameCard="volley">
-      <img class="frontFace" src="img/ball/volley_ball.png" alt="volleyball">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+<script>
+  const memoryGame = document.querySelector('#memoryGame');
+  let resultsArray = [];
+  let counter = 0;
+  //var seconds = 0;
+  //var tens = 0;
+  //var score = 0;
+  //var appendTens = document.getElementById("tens");
+  // var appendSeconds = document.getElementById("seconds");
+  var buttonPause = document.getElementById('buttonPause');
 
-    <div class="memoryCard" data-nameCard="bascket">
-      <img class="frontFace" src="img/ball/basketball.png" alt="bascketball">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+  var Interval;
+  const cardConsts = [
+    {'cardName': 'badminton', 'src': 'img/ball/badminton.png'},
+    {'cardName': 'badminton', 'src': 'img/ball/badminton.png'},
+    {'cardName': 'baseball', 'src': 'img/ball/baseball.png'},
+    {'cardName': 'baseball', 'src': 'img/ball/baseball.png'},
+    {'cardName': 'basketball', 'src': 'img/ball/basketball.png'},
+    {'cardName': 'basketball', 'src': 'img/ball/basketball.png'},
+    {'cardName': 'curling-stones', 'src': 'img/ball/curling-stones.png'},
+    {'cardName': 'curling-stones', 'src': 'img/ball/curling-stones.png'},
+    {'cardName': 'darts', 'src': 'img/ball/darts.png'},
+    {'cardName': 'darts', 'src': 'img/ball/darts.png'},
+    {'cardName': 'tennis', 'src': 'img/ball/tennis-ball.png'},
+    {'cardName': 'tennis', 'src': 'img/ball/tennis-ball.png'},
+  ];
 
-    <div class="memoryCard" data-nameCard="bascket">
-      <img class="frontFace" src="img/ball/basketball.png" alt="bascketball">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+  function shuffleField(arr) { // тасование алгоритмом Фишера-Йетса
+    let randomInd; // рандомный индекс массива
+    let tempVal; //*/
+    for (let i = arr.length - 1; i > 0; i--) {
+      randomInd = Math.floor(Math.random() * (i + 1)); //генерируем целое число
+      tempVal = arr[randomInd]; // меняем местами
+      arr[randomInd] = arr[i]; //элемент массива с индексом randomInd
+      arr[i] = tempVal; //и текущий элемент массива
+    }
+    return arr; //на выходе перемешанный массив
+  }
 
-    <div class="memoryCard" data-nameCard="football">
-      <img class="frontFace" src="img/ball/football.png" alt="football">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+  shuffleField(cardConsts);
 
-    <div class="memoryCard" data-nameCard="football">
-      <img class="frontFace" src="img/ball/football.png" alt="football">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+  for (let i = 0; i < cardConsts.length; i++) {
+    const frontFace = document.createElement("div");
+    frontFace.classList.add('frontFace');
+    frontFace.dataset.cardname = cardConsts[i].cardName;
 
-    <div class="memoryCard" data-nameCard="bigtennis">
-      <img class="frontFace" src="img/ball/tennisball.png" alt="bigtennis">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+    const images = document.createElement("img");
+    images.classList.add('images');
+    images.src = cardConsts[i].src;
 
-    <div class="memoryCard" data-nameCard="bigtennis">
-      <img class="frontFace" src="img/ball/tennisball.png" alt="bigtennis">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
+    frontFace.appendChild(images);
+    memoryGame.appendChild(frontFace);
 
-    <div class="memoryCard" data-nameCard="rugbi">
-      <img class="frontFace" src="img/ball/rugby.png" alt="rugbi">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="rugbi">
-      <img class="frontFace" src="img/ball/rugby.png" alt="rugbi">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="badminton">
-      <img class="frontFace" src="img/ball/badminton.png" alt="badminton">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="badminton">
-      <img class="frontFace" src="img/ball/badminton.png" alt="badminton">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="waterpolo">
-      <img class="frontFace" src="img/ball/water-polo.png" alt="waterpolo">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="waterpolo">
-      <img class="frontFace" src="img/ball/water-polo.png" alt="waterpolo">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="handball">
-      <img class="frontFace" src="img/ball/handball.png" alt="handball">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-
-    <div class="memoryCard" data-nameCard="handball">
-      <img class="frontFace" src="img/ball/handball.png" alt="handball">
-      <img class="backFace" src="img/card_background.jpg" alt="Memory Card">
-    </div>
-  </section>
-
-  <script>
-  let userName;
-  /*const gameConsts = {
-    'gameAriaWidth': 800,
-    'gameAriaHeight': 800,
-
-    cardType: {
-      tennisBall: {
-        'name_card': 'tennis',
-        'front-face': 'img/ball/basketball_PNG1094.png',
-        'back-face': 'img/card_background.jpg',
-        'bgd-color': '#55db1d7'
-      },
-      volleyBall: {
-        'name_card': 'volley',
-        'front-face': 'img/ball/volleyball.jpg',
-        'back-face': 'img/card_background.jpg',
-        'bgd-color': '#55db1d7'
+    frontFace.onclick = function () {
+      if (this.classList !== 'flipped' && this.classList !== 'correct') {
+        this.classList.toggle('flipped');
+        let result = this.dataset.cardname;
+        resultsArray.push(result);
+        //clearInterval(Interval);
+        //Interval = setInterval(startTimer, 10);
       }
+
+      if (resultsArray.length > 1) {
+        if (resultsArray[0] === resultsArray[1]) {
+          checkCards('correct');
+          counter++;
+          //winPair();
+          resultsArray = [];
+        } else {
+          checkCards('reverse');
+          resultsArray = []; //resultsArray.splice(0)
+        }
+      }
+    }
+  }
+
+  window.onload = function () {
+    let spanScore = document.getElementById('score');
+    let score = 0;
+    spanScore.innerHTML = score;
+    document.body.onclick = function (EO) {
+      EO = EO || document.event;
+      let target = EO.target || EO.srcElement;
+      if (target.classList !== 'flipped') return;
+      score++;
+      spanScore.innerHTML = Math.floor(score / 2);
     }
   };
-  let gameField = document.getElementById('memoryGame');
 
-  function MemoryCard(imgFrontFace, nameCard, imgBackFace, bgdColorBackFace) {  //нужен ли тут this?
-    let memoryCard = document.createElement("div");
-    memoryCard.className = 'memoryCard';
-    memoryCard.dataset.nameCard = nameCard; // добавляем data-атрибут, что бы определить совпадают ли карточки
-    let frontCard = document.createElement("img");
-    frontCard.className = 'frontFace';
-    frontCard.src = imgFrontFace;
-    let backCard = document.createElement("img");
-    backCard.className = 'backFace';
-    backCard.src = imgBackFace;
-    backCard.style.backgroundColor = bgdColorBackFace;
+  let checkCards = function (classList) {
+    let flipCards = document.querySelectorAll(".flipped");
 
-    memoryCard.appendChild(frontCard);
-    memoryCard.appendChild(backCard);
-    return memoryCard;
-  }
-
-  let tennisCard = new MemoryCard(gameConsts.cardType.tennisBall["front-face"],
-    gameConsts.cardType.tennisBall["name_card"],
-    gameConsts.cardType.tennisBall["back-face"],
-    gameConsts.cardType.tennisBall["bgd-color"]);
-  let volleyCard = new MemoryCard(gameConsts.cardType.volleyBall["front-face"],
-    gameConsts.cardType.volleyBall["name_card"],
-    gameConsts.cardType.volleyBall["back-face"],
-    gameConsts.cardType.volleyBall["bgd-color"]);
-
-  gameField.appendChild(tennisCard);
-  gameField.appendChild(volleyCard);
-
-  let cloneField = gameField.cloneNode(true);
-  cloneField.appendChild(tennisCard);
-  cloneField.appendChild(volleyCard);
-
-  let container = document.body;
-  container.replaceChild(cloneField, gameField);
-
-  let memoryCardArray = [];
-  //let doubleMemoryCardArray = [];
-  memoryCardArray.push(tennisCard, volleyCard);
-  let doubleMemoryCardArray  = memoryCardArray.concat(memoryCardArray.slice(0));
-  shuffleField(doubleMemoryCardArray);
-  console.log(gameField);
-*/
-
-  /*
-    let memoryArray = Array.from(document.querySelectorAll("div"));
-  console.log(memoryArray);
-    function shuffleField(arr) { // тасование алгоритмом Фишера-Йетса
-      var j, temp;
-      for (var i = arr.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1)); //генерируем целое число
-        temp = arr[j]; // меняем местами
-        arr[j] = arr[i]; //элемент массива с индексом j
-        arr[i] = temp; //и текущий элемент массива
-      }
-      return arr; //на выходе перемешанный массив
-    }
-  shuffleField(memoryArray);
-  */
-
-
-  //---------работа с картами + событиями------клик на карточку = переворачивается
-  const gameField = document.querySelectorAll('.memoryCard');
-  let cardIsFlipped = false;//состояние перевернутой карточки
-  let firstCard; //первая перевернутая карта
-  let secondCard; //вторая перевернутая карта
-  let lockCards = false; //блокировка не нажатых карт при уже нажатых двух
-
-  gameField.forEach(function (card) {
-    let shufflePos = Math.floor(Math.random() * gameField.length);
-    card.style.order = shufflePos;
-  });
-
-  function flipCard() {
-    this.classList.add('flip');
-    if (!cardIsFlipped) {
-      cardIsFlipped = true;
-      firstCard = this;
-    } else {
-      secondCard = this;
-      cardIsFlipped = false;
-      checkMatch();
-    }
-  }
-
-  function checkMatch() {
-    (firstCard.dataset.nameCard === secondCard.dataset.nameCard) ? disableCard() : unflipCards();
-  }
-
-  function disableCard() {
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
-    resetBoard();
-  }
-
-  function unflipCards() {
-    lockCards = true;
     setTimeout(function () {
-      firstCard.classList.remove('flip');
-      secondCard.classList.remove('flip');
-      resetBoard();
-    }, 1500);
-  }
+      for (let i = (flipCards.length - 1); i >= 0; i--) {
+        flipCards[i].classList.replace('flipped', classList);
+      }
 
-  function resetBoard() {
-    cardIsFlipped = lockCards = false;
-    firstCard = secondCard = null;
-  }
+    }, 500);
 
-  gameField.forEach(function (card) {
-    card.addEventListener('click', flipCard)
-  });
-  //-------------------------------------------------
+  };
+
+  buttonPause.onclick = function () {
+    clearInterval(Interval);
+  }
   //-----обратный таймер------
   //time -  массив, минуты секунды
   //call - функция с параметрами, минуты и секунды обратного отсчета
@@ -237,7 +132,6 @@
       if (time[0] === 0 && time[1] === 0) {
         timer.pause();
         call(0, 0);
-
         if (time[1] === 0) {
           time[1] = 59;
           time[0]--;
@@ -257,19 +151,45 @@
   timer.pause();    // в каком мете применить------------------------------------
   timer.start();    // в каком мете применить------------------------------------
 */
-  //--------------------------------------------
 
-  let startGame;
-  let cardFlipped;
 
-  function initGame() {
+  /*
+ let timeDown = [0,0];
+  let countTimeDown;
+  function startTimer(time, call) {
+    if (timeDown){
+      clearInterval(timeDown);
+      timeDown = 0;
+    }
+    startTimer.lastCall = call;
+    startTimer.lastTime = time;
+    startTimer.timerInterval = setInterval(function () {
+      call(time[0], time[1]);
+      time[1]--;
+      if (time[0] === 0 && time[1] === 0) {
+        startTimer.pause();
+        call(0, 0);
+
+        if (time[1] === 0) {
+          time[1] = 59;
+          time[0]--;
+        }
+      }
+      timer.lastTime = time
+    }, 1000)
+  }
+  function tickDown() {
+
+  }
+
+   function initGame() {
     startGame = timer([2, 0], function (m, s) {
       document.getElementsByClassName('.timeDown').innerHTML = (m + ':' + s);
     });
     //cardFlipped = 0; // перевернутые карты, добавить счет количество перевернутых карт
     shuffleField(memoryArray);
   }
-
+*/
 </script>
 </body>
 </html>
