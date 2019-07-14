@@ -178,11 +178,11 @@ section {
 .navbar {
     display: flex;
     width: 100%;
-    max-width: 75vw;
+    max-width: 80vw;
     margin: 0 auto;
     padding: 2em;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .navbar__item {
@@ -315,4 +315,52 @@ tr td:last-child {
     padding-left: 5em;
     font-size: 2em;
     line-height: 1.5em;
+}
+
+
+/*------------M E D I A------------*/
+@media screen and (max-width: 670px) {
+    .animateTitle {
+        font-size: 4.5em;
+        margin-top: 2em;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .animateTitle {
+        font-size: 3.3em;
+        margin-top: 2em;
+    }
+
+    .wrapNavDown {
+        margin-top: 9em;
+    }
+
+    .navDown {
+        left: 44%;
+    }
+
+    .navbar {
+        padding: 2em;
+        justify-content: center;
+    }
+    .navbar__item{
+        font-size: 0.8em;
+    }
+    .wrap-regulation{
+        margin-top: 0;
+        padding: 1em 1em 1em;
+    }
+    .reguletion_describe {
+        font-size: 1.4em;
+        letter-spacing: 0em;
+    }
+    .wrapAboutProject{
+        max-width: 17em;
+        margin: 0;
+    }
+    .aboutProject{
+        padding-left: 0;
+        font-size: 1.5em;
+    }
 }

@@ -1,8 +1,9 @@
 @import url(style.css);
 
-.wrapPlay{
+.wrapPlay {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 #memoryGame {
@@ -11,17 +12,17 @@
     width: 100%;
     max-width: 40em;
     margin: 0 auto;
-    padding: 10px;
+    padding: 0.625em;
 }
 
 .wrapScore {
     display: inline-flex;
-    width: 50em;
+    width: 23em;
     margin: 0 auto;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     font-family: 'Rubik', sans-serif;
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 600;
     color: #ff502f;
     text-shadow: #004d61 2px 1px;
@@ -32,11 +33,11 @@
     transform: rotateY(180deg);
     width: 8em;
     height: 8em;
-    margin: 10px;
+    margin: 0.625em;
     float: left;
     cursor: pointer;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0.625em;
     box-shadow: -3px 3px 10px #000;
 
 }
@@ -52,10 +53,10 @@ div img {
 
 .images {
     display: block;
-    width: 100px;
-    height: 100px;
-    margin: 20px auto;
-    border-radius: 10px;
+    width: 6.25em;
+    height: 6.25em;
+    margin: 1.25em auto;
+    border-radius: 0.625em;
 }
 
 .flipped img {
@@ -95,16 +96,16 @@ div img {
     text-decoration: none;
     outline: none;
     display: inline-block;
-    width: 100px;
-    height: 35px;
-    line-height: 20px;
+    width: 6.25em;
+    height: 2.188em;
+    line-height: 1.25em;
     border-radius: 45px;
-    margin: 10px 20px;
+    margin: 0.625em 1.25em;
     font-family: 'Rubik', sans-serif;
-    font-size: 13px;
+    font-size: 0.813em;
     text-transform: uppercase;
     text-align: center;
-    letter-spacing: 3px;
+    letter-spacing: 0.188em;
     font-weight: 600;
     color: #348498;
     background: white;
@@ -121,4 +122,12 @@ div img {
     box-shadow: 0 15px 20px rgba(52, 132, 152, .4);
     color: white;
     transform: translateY(-7px);
+}
+
+/*------------M E D I A----------------*/
+@media screen and (max-width: 600px) {
+    .wrapScore {
+        width: 17em;
+        font-size: 1em;
+    }
 }
