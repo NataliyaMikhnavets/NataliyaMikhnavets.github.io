@@ -38,7 +38,7 @@ const RequestAnimationFrame =
 
 function shuffleField(arr) { // тасование алгоритмом Фишера-Йетса
   let randomInd; // рандомный индекс массива
-  let tempVal; //*/
+  let tempVal;
   for (let i = arr.length - 1; i > 0; i--) {
     randomInd = Math.floor(Math.random() * (i + 1)); //генерируем целое число
     tempVal = arr[randomInd]; // меняем местами
@@ -51,10 +51,10 @@ function shuffleField(arr) { // тасование алгоритмом Фише
 shuffleField(cardConsts);
 
 for (let i = 0; i < cardConsts.length; i++) {
-  let frontFace = document.createElement("div");
+  let frontFace = document.createElement('div');
   frontFace.dataset.cardname = cardConsts[i].cardName;
 
-  const images = document.createElement("img");
+  const images = document.createElement('img');
   images.classList.add('images');
   images.src = cardConsts[i].src;
 
@@ -73,8 +73,8 @@ for (let i = 0; i < cardConsts.length; i++) {
     if (resultsArray.length > 1) {
       if (resultsArray[0] === resultsArray[1]) {
         checkCards('correct');
-        SetRotate('720deg')
-        Vibro(true);
+        setRotate('720deg');
+        vibro(true);
         musicCorrect.play();
         countCorrect++;
         win();
@@ -82,13 +82,13 @@ for (let i = 0; i < cardConsts.length; i++) {
       } else {
         checkCards('reverse');
         resultsArray = []; //resultsArray.splice(0)
-        Vibro(false);
+        vibro(false);
       }
     }
-  }
+  };
 }
 
-function SetRotate(NewAngle) {
+function setRotate(NewAngle) {
   const divCorrect = document.querySelector('.correct');
   divCorrect.style.transform = 'rotate(' + NewAngle + ')';
   divCorrect.style.webkitTransform = 'rotate(' + NewAngle + ')';
@@ -101,7 +101,7 @@ function initGame() {
   const spanScore = document.getElementById('score'); //получить блок с количеством ходов
   let score = 0;
   spanScore.innerHTML = score;
-  document.body.onclick = function (EO) {
+  document.body.onclick = (EO)=> {
     musicClick.play();
     EO = EO || document.event;
     let target = EO.target || EO.srcElement;
@@ -111,7 +111,7 @@ function initGame() {
   };
 
   if (startTime !== [0, 0]) {
-    startTimer = timer(startTime, function (m, s) {
+    startTimer = timer(startTime, (m, s) => {
       spanTimeDown.innerHTML = (m + ':' + s);
     });
   } else {
@@ -121,17 +121,17 @@ function initGame() {
   RequestAnimationFrame(startTime);
 }
 
-let checkCards = function (className) {
-  let flipCards = document.querySelectorAll(".flipped");
+let checkCards = (className) => {
+  let flipCards = document.querySelectorAll('.flipped');
 
-  setTimeout(function () {
+  setTimeout(() => {
     for (let i = (flipCards.length - 1); i >= 0; i--) {
       flipCards[i].className = className;
     }
   }, 500);
 };
 
-let win = function () {
+let win = () => {
   if (countCorrect === (cardConsts.length / 2)) {
     clearInterval(Interval);
     // запись рекорда
@@ -146,7 +146,7 @@ let win = function () {
 function timer(time, call) {
   timer.lastCall = call;
   timer.lastTime = time;
-  timer.timerInterval = setInterval(function () {
+  timer.timerInterval = setInterval(() => {
     call(time[0], time[1]);
     time[1]--;
     if (time[0] === 0 && time[1] === 0) {
@@ -161,17 +161,17 @@ function timer(time, call) {
   }, 1000);
 }
 
-timer.pause = function () {
-  clearInterval(timer.timerInterval)
+timer.pause = () => {
+  clearInterval(timer.timerInterval);
 };
-timer.start = function () {
-  timer(timer.lastTime, timer.lastCall)
+timer.start = () => {
+  timer(timer.lastTime, timer.lastCall);
 };
 /*
 timer.pause();
 timer.start();*/
 
-document.addEventListener('click', function (event) {
+document.addEventListener('click', (event) => {
   if (event.keyCode === 8) {
     timer.pause();
     musicGame.pause();
@@ -189,7 +189,7 @@ function gameOver() {
   const wrapGameOver = document.createElement('div');
   wrapGameOver.classList.add('wrapGameOver');
 
-  const btnAgain = document.createElement("input");
+  const btnAgain = document.createElement('input');
   btnAgain.classList.add('btnAgain');
   btnAgain.type = 'button';
   btnAgain.value = 'Play again?';
@@ -208,7 +208,7 @@ function gameOver() {
   document.getElementsByClassName('wrapPlay').appendChild(wrapGameOver);
 }
 
-function Vibro(LongFlag) {
+function vibro(LongFlag) {
   if (navigator.vibrate) {
     if (!LongFlag) {
       window.navigator.vibrate(300);
@@ -217,6 +217,3 @@ function Vibro(LongFlag) {
     }
   }
 }
-
-
-
