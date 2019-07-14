@@ -1,0 +1,192 @@
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: 100vh;
+    background-color: #5bd1d7;
+}
+
+body h1 {
+    margin: 0 auto;
+    font-size: 7em;
+    color: #004d61;
+    /*
+    font-family: ;
+    */
+    font-weight: bold;
+    text-shadow: -2px 3px #000000;
+}
+
+#memoryGame {
+    background-color: transparent;
+    text-align: center;
+    width: 650px;
+    height: 530px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.wrapScore {
+    display: inline-flex;
+    width: 50em;
+    margin: 0 auto;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 600;
+color: #ff502f;
+}
+
+/*.frontFace*/
+#memoryGame div {
+    transform: rotateY(180deg);
+    width: 140px;
+    height: 140px;
+    margin: 10px;
+    float: left;
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: -3px 3px 10px #000;
+
+}
+
+div img {
+   visibility: hidden;
+}
+
+.images {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.flipped img {
+    visibility: visible;
+}
+
+
+.flipped {
+    transition: 0.2s;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: rotateY(0deg);
+}
+
+.reverse {
+    transition: 0.2s;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: rotateY(180deg);
+}
+
+.correct {
+    transition: 0.8s;
+    opacity: 0.2;
+    cursor: default;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: translateX(-5000%);
+}
+
+.wrapPause {
+    display: block;
+    margin: 0 auto;
+}
+
+#buttonPause {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    width: 140px;
+    height: 45px;
+    line-height: 40px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #348498;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0,0,0,.5);
+    transition: .3s;
+}
+
+.wrapPause {
+    margin: 0 auto;
+}
+
+#buttonPause:hover {
+    background: #5bd1d7;
+    box-shadow: 0 15px 20px rgba(52,132,152,.4);
+    color: white;
+    transform: translateY(-7px);
+}
+
+
+/*
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background-color: #5bd1d7;
+}
+#memoryGame {
+    display: flex;
+    flex-wrap: wrap;
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    perspective: 1000px; !*3d-эффект: расстояние между объектом и пользоватилем в z-плоскости, чем ниже знач , тем сильнее эффект*!
+}
+
+.memoryCard {
+    margin: 5px;
+    width: calc(25% - 10px);
+    height: calc(25% - 10px);
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s; !*без transform-style: preserve-3d - не работает, создается эффект движения*!
+}
+
+.memoryCard:active { !*эффект при клике на карточку*!
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+
+.memoryCard.flip {
+    transform: rotateY(180deg);
+}
+
+.frontFace,
+.backFace {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden; !*прячем обратную сторону элемента в трехмерном пространстве*!
+}
+
+.frontFace {
+    transform: rotateY(180deg);
+}
+
+.timeDown {
+    display: block;
+    margin: 2px;
+    padding: 2px;
+}*/
+
