@@ -4,27 +4,41 @@
   <meta charset="UTF-8">
   <title>main</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mainGame.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="js/JQuery/start.js"></script>
 </head>
 <body>
-  <nav class="navbar">
-      <input type="button" class="navbar__item" id="btn-main" value="Main" title="Main">
-      <input type="button" class="navbar__item" id="btn-play" value="Play" title="Play">
-      <input type="button" class="navbar__item" id="btn-score" value="Score" title="Score">
-      <input type="button" class="navbar__item" id="btn-setting" value="Setting" title="Setting">
-      <input type="button" class="navbar__item" id="btn-rules" value="About game" title="About game">
-      <input type="button" class="navbar__item" id="btn-aboutProject" value="About project" title="About project">
-  </nav>
-
-  <div class = 'main-part'>
-    <div class="wrapper">
-      <main id="article" class="content">
-
-      </main>
+  <section class="wrapStart">
+    <div class="animateTitle title">
+      <span>T</span><span>r</span><span>a</span><span>i</span><span>n</span><span>i</span><span>n</span><span>g</span>&nbsp
+      <br><span>f</span><span>o</span><span>r</span>&nbsp<br>
+      <span>m</span><span>e</span><span>m</span><span>o</span><span>r</span><span>y</span>
     </div>
-  </div>
-<!--<div id="IPage"></div>-->
-<script>
-  
-</script>
+    <div class="wrapNavDown">Click to start the game
+      <nav class="navDown"></nav>
+    </div>
+  </section>
+
+  <section class="wrapMainGame">
+    <nav class="navbar">
+      <input type="button" class="navbar__item" id="btn-main" value="Main" title="Main" onclick="switchToMain()">
+      <input type="button" class="navbar__item" id="btn-play" value="Play" title="Play" onclick="switchToPlay()">
+      <input type="button" class="navbar__item" id="btn-score" value="Score" title="Score" onclick="switchToScore()">
+      <input type="button" class="navbar__item" id="btn-rules" value="Rules" title="Rules"
+             onclick="switchToRules()">
+      <input type="button" class="navbar__item" id="btn-aboutProject" value="About project" title="About project"
+             onclick="switchToAboutProject()">
+    </nav>
+    <main class='main-part'>
+      <div id="article" class="content">
+      </div>
+    </main>
+  </section>
+
+  <script src="js/app.js"></script>
+  <script src="js/mainGame.js"></script>
 </body>
 </html>
+
