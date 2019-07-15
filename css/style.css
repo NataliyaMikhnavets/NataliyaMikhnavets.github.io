@@ -3,6 +3,7 @@
 
 * {
     margin: 0;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box
 }
 
@@ -63,82 +64,102 @@ section {
 }
 
 .wrapStart span:nth-of-type(2) {
+    -webkit-animation-delay: .05s;
     animation-delay: .05s;
 }
 
 .wrapStart span:nth-of-type(3) {
+    -webkit-animation-delay: .1s;
     animation-delay: .1s;
 }
 
 .wrapStart span:nth-of-type(4) {
+    -webkit-animation-delay: .15s;
     animation-delay: .15s;
 }
 
 .wrapStart span:nth-of-type(5) {
+    -webkit-animation-delay: .2s;
     animation-delay: .2s;
 }
 
 .wrapStart span:nth-of-type(6) {
+    -webkit-animation-delay: .25s;
     animation-delay: .25s;
 }
 
 .wrapStart span:nth-of-type(7) {
+    -webkit-animation-delay: .3s;
     animation-delay: .3s;
 }
 
 .wrapStart span:nth-of-type(8) {
+    -webkit-animation-delay: .35s;
     animation-delay: .35s;
 }
 
 .wrapStart span:nth-of-type(9) {
+    -webkit-animation-delay: .4s;
     animation-delay: .4s;
 }
 
 .wrapStart span:nth-of-type(10) {
+    -webkit-animation-delay: .45s;
     animation-delay: .45s;
 }
 
 .wrapStart span:nth-of-type(11) {
+    -webkit-animation-delay: .5s;
     animation-delay: .5s;
 }
 
 .wrapStart span:nth-of-type(12) {
+    -webkit-animation-delay: .55s;
     animation-delay: .55s;
 }
 
 .wrapStart span:nth-of-type(13) {
+    -webkit-animation-delay: .6s;
     animation-delay: .6s;
 }
 
 .wrapStart span:nth-of-type(14) {
+    -webkit-animation-delay: .65s;
     animation-delay: .65s;
 }
 
 .wrapStart span:nth-of-type(15) {
+    -webkit-animation-delay: .7s;
     animation-delay: .7s;
 }
 
 .wrapStart span:nth-of-type(16) {
+    -webkit-animation-delay: .75s;
     animation-delay: .75s;
 }
 
 .wrapStart span:nth-of-type(17) {
+    -webkit-animation-delay: .8s;
     animation-delay: .8s;
 }
 
 .wrapStart span:nth-of-type(18) {
+    -webkit-animation-delay: .85s;
     animation-delay: .85s;
 }
 
 .wrapStart span:nth-of-type(19) {
+    -webkit-animation-delay: .9s;
     animation-delay: .9s;
 }
 
 .wrapStart span:nth-of-type(20) {
+    -webkit-animation-delay: .95s;
     animation-delay: .95s;
 }
 
 .wrapStart span:nth-of-type(21) {
+    -webkit-animation-delay: 1s;
     animation-delay: 1s;
 }
 
@@ -146,22 +167,47 @@ section {
     display: inline-block;
     color: var(--index-title-color);
     opacity: 0;
+    -webkit-transform: translate(-9.375em, -3.125em) rotate(-180deg) scale(3);
+    -ms-transform: translate(-9.375em, -3.125em) rotate(-180deg) scale(3);
     transform: translate(-9.375em, -3.125em) rotate(-180deg) scale(3);
+    -webkit-animation: titleChangeScale .4s forwards;
     animation: titleChangeScale .4s forwards;
 }
 
-@keyframes titleChangeScale {
+@-webkit-keyframes titleChangeScale {
     0% {
         opacity: 0;
+        -webkit-transform: scale(.3);
         transform: scale(.3);
     }
     60% {
         opacity: 0.8;
+        -webkit-transform: scale(1.3);
         transform: scale(1.3);
     }
 
     100% {
         opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes titleChangeScale {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(.3);
+        transform: scale(.3);
+    }
+    60% {
+        opacity: 0.8;
+        -webkit-transform: scale(1.3);
+        transform: scale(1.3);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
         transform: none;
     }
 }
@@ -176,12 +222,18 @@ section {
 }
 
 .navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     max-width: 80vw;
     margin: 0 auto;
     padding: 2em;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
 }
 
@@ -226,9 +278,11 @@ section {
 }
 
 .wrap-regulation {
+    -webkit-box-sizing: content-box;
     box-sizing: content-box;
     margin-top: 5em;
     padding: 2em 2em 1em;
+    -webkit-box-shadow: 0 0 20px 5px #004d61;
     box-shadow: 0 0 20px 5px #004d61;
     border-radius: 1em;
     background-color: rgba(91, 209, 215, 0.5);
@@ -347,6 +401,8 @@ tr td:last-child {
 
     .navbar {
         padding: 2em;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
 
