@@ -72,6 +72,7 @@ for (let i = 0; i < cardConsts.length; i++) {
     if (resultsArray.length > 1) {
       if (resultsArray[0] === resultsArray[1]) {
         checkCards('correct');
+        setRotate('720deg');
         vibro(true);
         musicCorrect.play();
         countCorrect++;
@@ -84,6 +85,12 @@ for (let i = 0; i < cardConsts.length; i++) {
       }
     }
   };
+}
+
+function setRotate(NewAngle) {
+  const divCorrect = document.getElementsByClassName('correct');
+  divCorrect.style.transform = 'rotate(' + NewAngle + ')';
+  divCorrect.style.webkitTransform = 'rotate(' + NewAngle + ')';
 }
 
 window.onload = initGame;
