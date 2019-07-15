@@ -1,7 +1,7 @@
 'use strict';
 
 let AjaxHandlerScript = "http://fe.it-academy.by/AjaxStringStorage2.php";
-let MessagesA;// элемент массива - {name:'Иванов',mess:'Привет'};
+let MessagesA;// элемент массива
 
 window.onhashchange = SwitchToStateFromURLHash;
 
@@ -32,7 +32,9 @@ function SwitchToStateFromURLHash() {
                    </div>
                    <div id="memoryGame"></div>
                    <div class="wrapPause">
-                     <button id="buttonPause">Pause</button>
+                     <button class="buttonPause" id="timePause">Pause Time</button>
+                     <button class="buttonPause" id="continPause">Start Time</button>
+                     <button class="buttonPause" id="sound">Sound off/on</button>
                    </div></div>`;
       break;
     case 'Score':
@@ -50,7 +52,7 @@ function SwitchToStateFromURLHash() {
                    </article>`;
       break;
     case'AboutProject':
-      pageHTML += `<div class="wrapAboutProject"><p class="aboutProject"><b>Final project:</b> Training for memory</p>
+      pageHTML += `<div class="wrapPage"><p class="aboutProject"><b>Final project:</b> Training for memory</p>
                    <p class="aboutProject"><b>Author:</b> Mikhnavets Nataliya</p>
                    <p class="aboutProject"><b>Trainer:</b> Stashkevich Alexandr</p>
                    <p class="aboutProject"><b>Date:</b> July, 2019</p></div>`;
@@ -69,6 +71,7 @@ function switchToMain() {
 
 function switchToPlay() {
   switchToState({pageName: 'Play'});
+  document.location.reload(true);
 }
 
 function switchToScore() {
@@ -86,7 +89,7 @@ function switchToAboutProject() {
 SwitchToStateFromURLHash();
 
 function showRecords() {
-  $ajax(
+  $.ajax(
     {
       url: AjaxHandlerScript,
       type: 'POST',
@@ -114,13 +117,16 @@ function ReadReady(ResultH) {
 
 function AddRecords() {
   $('#article').empty();
-  let contTable = `<table class="tableRecords">
-  <caption>Рекорды и сохранение результатов</caption>
+  let contTable = `<div class="wrapPage"><table class="tableRecords">
   <tr>
     <th>Имя игрока</th>
     <th>Количество ходов</th>
     <th>Дата</th>
-  </tr>`;
+  </tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td></tr></table></div>`;
 
   for (let m = MessagesA.length - 1; m >= 0; --m) {
     let fillPlayer = MessagesA[m];
@@ -136,9 +142,6 @@ function AddRecords() {
         date = fillPlayer[k];
       }
     }
-    //(k === 'name') ? (name = fillPlayer[k]) :
-    // (k === 'score') ? (score = fillPlayer[k]) :
-    // (k === 'date') ? (date = fillPlayer[k]);
     contTable += `<tr>
     <td>${name}</td>
     <td>${score}</td>

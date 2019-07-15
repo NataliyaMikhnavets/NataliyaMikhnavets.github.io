@@ -251,7 +251,7 @@ section {
 
 /*----------------T A B L E   R E C O R D-----------------*/
 table {
-    font-size: 0.875em;
+    font-size: 1em;
     border-radius: 0.625em;
     border-spacing: 0;
     text-align: center;
@@ -262,12 +262,16 @@ th {
     color: var(--index-table-th-color);
     text-shadow: 0 0.063em 0.063em var(--index-table-th-text-shadow-color);
     padding: 0.625em 1.25em;
+    letter-spacing: 0.6em;
+    line-height: 1.1em;
+    font-weight: 800;
 }
 
 th, td {
     border-style: solid;
     border-width: 0 0.063em 0.063em 0;
     border-color: white;
+    font-size: 1.4em;
 }
 
 th:first-child, td:first-child {
@@ -301,24 +305,25 @@ tr td:last-child {
 }
 
 
-/*-------------------A B O U T  G A M E--------------*/
+/*----------------------A B O U T  G A M E---------------*/
 
 /*-----------------A B O U T  P R O J E C T--------------*/
-.wrapAboutProject {
+.wrapPage {
     width: 100%;
     max-width: 40em;
     margin: 5em auto;
     font-family: 'Caveat', cursive;
+    color: #004d61;
 }
 
 .aboutProject {
-    padding-left: 5em;
+    padding-left: 2em;
     font-size: 2em;
     line-height: 1.5em;
 }
 
 
-/*------------M E D I A------------*/
+/*-----------------------M E D I A----------------------*/
 @media screen and (max-width: 670px) {
     .animateTitle {
         font-size: 4.5em;
@@ -344,22 +349,27 @@ tr td:last-child {
         padding: 2em;
         justify-content: center;
     }
-    .navbar__item{
+
+    .navbar__item {
         font-size: 0.8em;
     }
-    .wrap-regulation{
+
+    .wrap-regulation {
         margin-top: 0;
         padding: 1em 1em 1em;
     }
+
     .reguletion_describe {
         font-size: 1.4em;
-        letter-spacing: 0em;
+        letter-spacing: 0;
     }
-    .wrapAboutProject{
+
+    .wrapPage {
         max-width: 17em;
         margin: 0;
     }
-    .aboutProject{
+
+    .aboutProject {
         padding-left: 0;
         font-size: 1.5em;
     }

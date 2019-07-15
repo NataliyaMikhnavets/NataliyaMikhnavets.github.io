@@ -3,10 +3,9 @@
 const memoryGame = document.getElementById('memoryGame');
 let resultsArray = []; //массив из открытых карточек
 let countCorrect = 0; // количество верных пар
-let startTime = [2, 5]; //массив минуты:секунды начаkа игры
+let startTime = [2, 30]; //массив минуты:секунды начаkа игры
 let startTimer; // старт таймера
 const spanTimeDown = document.getElementById('timeDown'); //получить блок с таймером
-const buttonPause = document.getElementById('buttonPause'); //получить блок с кнопкой "пауза"
 let Interval; // отметка таймера
 let musicGame = new Audio('./audio/fon-muzyka.mp3'); //фоновая музыка игры
 let musicCorrect = new Audio('./audio/correct.mp3'); //фоновая музыка игры
@@ -36,16 +35,16 @@ const RequestAnimationFrame =
   }
 ;
 
-function shuffleField(arr) { // тасование алгоритмом Фишера-Йетса
-  let randomInd; // рандомный индекс массива
+function shuffleField(arr) {
+  let randomInd;
   let tempVal;
   for (let i = arr.length - 1; i > 0; i--) {
-    randomInd = Math.floor(Math.random() * (i + 1)); //генерируем целое число
-    tempVal = arr[randomInd]; // меняем местами
-    arr[randomInd] = arr[i]; //элемент массива с индексом randomInd
-    arr[i] = tempVal; //и текущий элемент массива
+    randomInd = Math.floor(Math.random() * (i + 1));
+    tempVal = arr[randomInd];
+    arr[randomInd] = arr[i];
+    arr[i] = tempVal;
   }
-  return arr; //на выходе перемешанный массив
+  return arr;
 }
 
 shuffleField(cardConsts);
@@ -81,7 +80,7 @@ for (let i = 0; i < cardConsts.length; i++) {
         resultsArray = [];
       } else {
         checkCards('reverse');
-        resultsArray = []; //resultsArray.splice(0)
+        resultsArray = [];
         vibro(false);
       }
     }
@@ -89,7 +88,7 @@ for (let i = 0; i < cardConsts.length; i++) {
 }
 
 function setRotate(NewAngle) {
-  const divCorrect = document.querySelector('.correct');
+  const divCorrect = document.getElementsByClassName('correct');
   divCorrect.style.transform = 'rotate(' + NewAngle + ')';
   divCorrect.style.webkitTransform = 'rotate(' + NewAngle + ')';
 }
@@ -98,10 +97,10 @@ window.onload = initGame;
 
 function initGame() {
   musicGame.play();
-  const spanScore = document.getElementById('score'); //получить блок с количеством ходов
+  const spanScore = document.getElementById('score');
   let score = 0;
   spanScore.innerHTML = score;
-  document.body.onclick = (EO)=> {
+  document.body.onclick = (EO) => {
     musicClick.play();
     EO = EO || document.event;
     let target = EO.target || EO.srcElement;
@@ -118,7 +117,7 @@ function initGame() {
     gameOver();
   }
 
-  RequestAnimationFrame(startTime);
+//  RequestAnimationFrame(startTimer);
 }
 
 let checkCards = (className) => {
@@ -134,11 +133,33 @@ let checkCards = (className) => {
 let win = () => {
   if (countCorrect === (cardConsts.length / 2)) {
     clearInterval(Interval);
-    // запись рекорда
     gameOver();
     musicGame.pause();
   }
 };
+
+function gameOver() {
+  const wrapGameOver = document.createElement('div');
+  wrapGameOver.classList.add('wrapGameOver');
+
+  const btnAgain = document.createElement('input');
+  btnAgain.classList.add('btnAgain');
+  btnAgain.type = 'button';
+  btnAgain.value = 'Play again?';
+  btnAgain.title = 'Play again?';
+  btnAgain.onclick = switchToPlay();
+  btnAgain.style.outline = 'none';
+  btnAgain.style.borderRadius = 32 + 'px';
+  btnAgain.style.letterSpacing = 1 + 'px';
+  btnAgain.style.fontSize = 20 + 'px';
+  btnAgain.style.color = '#e1e1e1';
+  btnAgain.style.backgroundColor = '#004d61';
+  btnAgain.style.width = 100 + 'px';
+  btnAgain.style.height = 40 + 'px';
+
+  wrapGameOver.appendChild(btnAgain);
+  document.getElementsByClassName('wrapPlay').appendChild(wrapGameOver);
+}
 
 //-----обратный таймер------
 //time -  массив, минуты секунды
@@ -167,46 +188,22 @@ timer.pause = () => {
 timer.start = () => {
   timer(timer.lastTime, timer.lastCall);
 };
-/*
-timer.pause();
-timer.start();*/
 
-document.addEventListener('click', (event) => {
-  if (event.keyCode === 8) {
-    timer.pause();
+document.getElementById("timePause").onclick = () => {
+  timer.pause();
+};
+
+document.getElementById("continPause").onclick = () => {
+  timer.start();
+};
+
+document.getElementById("sound").onclick = () => {
+  if (musicGame.paused === true) {
+    musicGame.play();
+  } else if (musicGame.paused === false) {
     musicGame.pause();
-    musicClick.pause();
   }
-}, false);
-
-/*buttonPause.onclick = function () {
-  clearInterval(timer.pause = function () {
-    clearInterval(timer.timerInterval)
-  });
-};*/
-
-function gameOver() {
-  const wrapGameOver = document.createElement('div');
-  wrapGameOver.classList.add('wrapGameOver');
-
-  const btnAgain = document.createElement('input');
-  btnAgain.classList.add('btnAgain');
-  btnAgain.type = 'button';
-  btnAgain.value = 'Play again?';
-  btnAgain.title = 'Play again?';
-  btnAgain.onclick = switchToPlay();
-  btnAgain.style.outline = 'none';
-  btnAgain.style.borderRadius = 32 + 'px';
-  btnAgain.style.letterSpacing = 1 + 'px';
-  btnAgain.style.fontSize = 20 + 'px';
-  btnAgain.style.color = '#e1e1e1';
-  btnAgain.style.backgroundColor = '#004d61';
-  btnAgain.style.width = 100 + 'px';
-  btnAgain.style.height = 40 + 'px';
-
-  wrapGameOver.appendChild(btnAgain);
-  document.getElementsByClassName('wrapPlay').appendChild(wrapGameOver);
-}
+};
 
 function vibro(LongFlag) {
   if (navigator.vibrate) {

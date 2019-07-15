@@ -28,7 +28,6 @@
     text-shadow: #004d61 2px 1px;
 }
 
-/*.frontFace*/
 #memoryGame div {
     transform: rotateY(180deg);
     width: 8em;
@@ -39,7 +38,6 @@
     background-color: #ffffff;
     border-radius: 0.625em;
     box-shadow: -3px 3px 10px #000;
-
 }
 
 div img {
@@ -92,12 +90,12 @@ div img {
     margin: 0 auto;
 }
 
-#buttonPause {
+.buttonPause {
     text-decoration: none;
     outline: none;
     display: inline-block;
-    width: 6.25em;
-    height: 2.188em;
+    width: 12.5em;
+    height: 3em;
     line-height: 1.25em;
     border-radius: 45px;
     margin: 0.625em 1.25em;
@@ -117,7 +115,7 @@ div img {
     margin: 0 auto;
 }
 
-#buttonPause:hover {
+.buttonPause:hover {
     background: #5bd1d7;
     box-shadow: 0 15px 20px rgba(52, 132, 152, .4);
     color: white;
@@ -129,5 +127,17 @@ div img {
     .wrapScore {
         width: 17em;
         font-size: 1em;
+    }
+
+    #memoryGame div {
+        width: 5em;
+        height: 5em;
+        margin: 0.5em;
+    }
+
+    .images {
+        width: 4em;
+        height: 4em;
+        margin: 0.5em auto;
     }
 }
