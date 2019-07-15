@@ -1,0 +1,33 @@
+:root {
+    --honeydew: #f9faf9;
+    --onahau: #cce0e5;
+    --medium-turquoise: #5bd1d7;
+    --scooter: #348498;
+    --sherpa-blue: #004d61;
+    --outrageous-orange: #ff502f;
+
+    /*----------------------S T A R T  T I T L E----------------*/
+    --index-navDown-color: var(--onahau);
+    --index-NavDown-bgd-arrow-color: var(--scooter);
+    --index-title-color: var(--outrageous-orange);
+    --index-title-text-shadow-color: var(--sherpa-blue);
+
+    /*-----------------S T A R T   G A M E  (B U T T O N)---------------*/
+    --index-navbar-item-color: var(--sherpa-blue);
+    --index-navbar-item-border: var(--sherpa-blue);
+    --index-navbar-item-bgd-color: var(--medium-turquoise);
+    --index-navbar-item-color-active: var(--medium-turquoise);
+    --index-navbar-item-bgd-color-active: var(--sherpa-blue);
+    --index-navbar-item-color-hover-focus: var(--medium-turquoise);
+    --index-navbar-item-bgd-color-hover-focus: var(--sherpa-blue);
+
+    /*-------------------M A I N   P A R T-------------------*/
+    --index-reguletion-describe-color: var(--sherpa-blue);
+
+    /*----------------T A B L E   R E C O R D-----------------*/
+    --index-table-th-bgd-color: var(--scooter);
+    --index-table-th-color: var(--honeydew);
+    --index-table-th-text-shadow-color: var(--sherpa-blue);
+    --index-table-td-bgd-color: var(--medium-turquoise);
+
+}
